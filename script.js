@@ -13,10 +13,10 @@ const chatUsername = document.getElementById('chatUsername');
 const nameInput = document.getElementById('nameInput');
 const emailInput = document.getElementById('emailInput');
 
-// Emojis list
+
 const emojis = ['😀', '😂', '😊', '😍', '😎', '😢', '😡', '👍', '🙏', '🎉', '❤️', '🎈'];
 
-// Load emojis into picker
+
 function loadEmojis() {
     emojis.forEach((emoji) => {
         const emojiButton = document.createElement('button');
@@ -24,28 +24,28 @@ function loadEmojis() {
         emojiButton.className = 'text-xl p-2 hover:bg-gray-100 rounded';
         emojiButton.onclick = () => {
             messageInput.value += emoji;
-            emojiPicker.classList.add('hidden'); // Hide picker after emoji click
+            emojiPicker.classList.add('hidden'); k
         };
         emojiPicker.appendChild(emojiButton);
     });
 }
 
-// Handle sign-in
+
 signInBtn.addEventListener('click', () => {
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const password = document.getElementById('passwordInput').value.trim();
 
-    // Email validation: check if it contains @
+   
     if (!email.includes('@')) {
         alert('Please enter a valid email address.');
-        return; // Stop further execution
+        return; 
     }
 
     if (name && email && password) {
         signInSection.style.display = 'none';
         chatSection.style.display = 'flex';
-        chatUsername.textContent = `Welcome, ${name}`; // Set the username
+        chatUsername.textContent = `Welcome, ${name}`; 
     } else {
         alert('Please fill in all fields.');
     }
@@ -60,7 +60,7 @@ signOutBtn.addEventListener('click', () => {
     chatSection.style.display = 'none';
 });
 
-// Handle message send
+
 sendBtn.addEventListener('click', () => {
     const message = messageInput.value.trim();
     if (message) {
@@ -68,14 +68,14 @@ sendBtn.addEventListener('click', () => {
         messageBubble.textContent = message;
         messageBubble.className = 'p-2 bg-blue-500 text-white rounded-lg max-w-xs self-end shadow-md';
         chatBox.appendChild(messageBubble);
-        chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll to bottom
-        messageInput.value = ''; // Clear input
+        chatBox.scrollTop = chatBox.scrollHeight; 
+        messageInput.value = '';
     } else {
         alert('Please type a message.');
     }
 });
 
-// Handle file attachment
+
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -87,10 +87,10 @@ fileInput.addEventListener('change', (event) => {
     }
 });
 
-// Show/hide emoji picker
+
 emojiBtn.addEventListener('click', () => {
     emojiPicker.classList.toggle('hidden');
 });
 
-// Load emojis when DOM is ready
+
 document.addEventListener('DOMContentLoaded', loadEmojis);
